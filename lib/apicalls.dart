@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:vocalpalette/apikey.dart';
+import 'package:vocalpal/apikey.dart';
 class apicall{
   final List<Map<String,String>>messages=[];
   Future<String>isart(String prompt)async{
