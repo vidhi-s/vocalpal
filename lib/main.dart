@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vocalpalette/homepage.dart';
+import 'package:vocalpal/homepage.dart';
 
 void main() {
   runApp(const MyApp());
