@@ -1,6 +1,6 @@
-# VocalPalette: Personal Virtual Voice Assistant with ChatGPT and Dall-E Integration
+# VocalPal: Personal Virtual Voice Assistant with ChatGPT and Dall-E Integration
 
-Welcome to VocalPalette, your sophisticated personal virtual voice assistant! This app is designed to enhance your daily tasks by offering a seamless voice-command-driven experience. Powered by the cutting-edge ChatGPT and Dall-E APIs, VocalPalette is more than just a voice assistant – it's a versatile tool that can understand your voice commands and generate images in response.
+Welcome to VocalPal, your sophisticated personal virtual voice assistant! This app is designed to enhance your daily tasks by offering a seamless voice-command-driven experience. Powered by the cutting-edge ChatGPT and Dall-E APIs, VocalPalette is more than just a voice assistant – it's a versatile tool that can understand your voice commands and generate images in response.
 
 ## Table of Contents
 
@@ -16,7 +16,7 @@ Welcome to VocalPalette, your sophisticated personal virtual voice assistant! Th
 
 ## Introduction
 
-VocalPalette is a powerful virtual voice assistant app built using the Flutter framework. It leverages the state-of-the-art ChatGPT natural language processing model and the Dall-E AI image generation tool to create a responsive and intelligent voice assistant that can perform various tasks based on your voice commands.
+VocalPal is a powerful virtual voice assistant app built using the Flutter framework. It leverages the state-of-the-art ChatGPT natural language processing model and the Dall-E AI image generation tool to create a responsive and intelligent voice assistant that can perform various tasks based on your voice commands.
 
 ## Features
 
@@ -38,7 +38,7 @@ Follow these steps to get VocalPalette up and running on your device.
 
 ## Usage
 
-1. Open VocalPalette on your device.
+1. Open VocalPal on your device.
 2. Grant necessary permissions for microphone and speech recognition.
 3. Issue voice commands like "tell me about programming" "Show me a picture of a beach," and more.
 5. Enjoy the seamless interaction and watch VocalPalette respond to your commands intelligently.
