@@ -2,7 +2,7 @@ import 'package:flutter_tts/flutter_tts.dart';
 import 'package:http/http.dart';
 import 'package:flutter/material.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
-import 'package:vocalpalette/apicalls.dart';
+import 'package:vocalpal/apicalls.dart';
 import 'features.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:animate_do/animate_do.dart';
