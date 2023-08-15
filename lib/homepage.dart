@@ -16,17 +16,18 @@ class homepage extends StatefulWidget {
 
 class _homepageState extends State<homepage> {
   final speechtotext = SpeechToText();
-final apicall apiservice=apicall();
-   String lastWords='';
+  final apicall apiservice = apicall();
+  String lastWords = '';
   final FlutterTts flutterTts = FlutterTts();
-  String? generatedvoice="";
-  String?generwatedimage="";
+  String? generatedvoice = "";
+  String? generwatedimage = "";
   @override
   void initState() {
     super.initState();
     initSpeechToText();
     // initTextToSppeech();
   }
+
   Future<void> initSpeechToText() async {
     await speechtotext.initialize();
     setState(() {});
@@ -41,6 +42,7 @@ final apicall apiservice=apicall();
     await speechtotext.stop();
     setState(() {});
   }
+
   // SpeechRecognitionResult
   void onSpeechResult(SpeechRecognitionResult result) {
     setState(() {
@@ -48,11 +50,13 @@ final apicall apiservice=apicall();
       print(lastWords);
     });
   }
-  Future<void>systemSpeak(String content)async{
+
+  Future<void> systemSpeak(String content) async {
     flutterTts.speak(content);
   }
+
   @override
-  void dispose(){
+  void dispose() {
     super.dispose();
     speechtotext.stop();
     flutterTts.stop();
@@ -91,7 +95,7 @@ final apicall apiservice=apicall();
           ),
           FadeInRight(
             child: Visibility(
-               visible: generwatedimage==null,
+              visible: generwatedimage == null,
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                 margin: EdgeInsets.symmetric(
@@ -99,28 +103,33 @@ final apicall apiservice=apicall();
                 ).copyWith(top: 20.0),
                 decoration: BoxDecoration(
                     border: Border.all(color: Color.fromRGBO(200, 200, 200, 1)),
-                    borderRadius:
-                        BorderRadius.circular(20.0).copyWith(topLeft: Radius.zero)),
+                    borderRadius: BorderRadius.circular(20.0)
+                        .copyWith(topLeft: Radius.zero)),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  child: Text(generatedvoice==null?
-                    'Hey there 🙋🏻 How can i help you today?':generatedvoice!,
+                  child: Text(
+                    generatedvoice == null
+                        ? 'Hey there 🙋🏻 How can i help you today?'
+                        : generatedvoice!,
                     style: TextStyle(
                         fontFamily: 'cera pro',
                         color: Color.fromRGBO(19, 61, 95, 1),
-                        fontSize:generatedvoice==null? 20.0:15.0),
+                        fontSize: generatedvoice == null ? 20.0 : 15.0),
                   ),
                 ),
               ),
             ),
           ),
-          if(generwatedimage!=null)Padding(
-            padding: const EdgeInsets.all(10.0),
-            child:ClipRRect (borderRadius: BorderRadius.circular(20.0),child: Image.network('$generwatedimage!')),
-          ),
+          if (generwatedimage != null)
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20.0),
+                  child: Image.network('$generwatedimage!')),
+            ),
           SlideInLeft(
             child: Visibility(
-               visible: generatedvoice==null&&generwatedimage==null,
+              visible: generatedvoice == null && generwatedimage == null,
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Container(
@@ -139,7 +148,7 @@ final apicall apiservice=apicall();
             ),
           ),
           Visibility(
-            visible: generatedvoice==null&&generwatedimage==null,
+            visible: generatedvoice == null && generwatedimage == null,
             child: Column(
               children: [
                 SlideInLeft(
@@ -166,37 +175,29 @@ final apicall apiservice=apicall();
         delay: Duration(milliseconds: 900),
         child: FloatingActionButton(
           onPressed: () async {
-            if(await speechtotext.hasPermission&&speechtotext.isNotListening){
+            if (await speechtotext.hasPermission &&
+                speechtotext.isNotListening) {
               await startListening();
-            }
-            else if(speechtotext.isListening){
-              final a=await apiservice.isart(lastWords);
-              if(a.contains('https')){
-                generwatedimage=a;
-                generatedvoice=null;
-                setState(() {
-
-                });
-              }
-              else{
-                generatedvoice=a;
-                generwatedimage=null;
-                setState(() {
-
-                });
+            } else if (speechtotext.isListening) {
+              final a = await apiservice.isart(lastWords);
+              if (a.contains('https')) {
+                generwatedimage = a;
+                generatedvoice = null;
+                setState(() {});
+              } else {
+                generatedvoice = a;
+                generwatedimage = null;
+                setState(() {});
                 await systemSpeak(a);
               }
 
-
               await stopListening();
-            }
-            else{
+            } else {
               initSpeechToText();
-
             }
           },
           backgroundColor: Color.fromRGBO(165, 231, 244, 1),
-          child: Icon(speechtotext.isListening?Icons.stop:Icons.mic),
+          child: Icon(speechtotext.isListening ? Icons.stop : Icons.mic),
         ),
       ),
     );
